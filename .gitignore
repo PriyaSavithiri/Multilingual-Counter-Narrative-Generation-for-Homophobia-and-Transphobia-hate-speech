@@ -1,0 +1,13 @@
+# Claude Code project files - not part of the codebase
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+
+# Secrets - only .env.example should ever be committed
+.env
+
+# Regenerable binary RAG index - rebuildable from data/knowledge/corpus.jsonl
+# via the project's own indexing code; not something to version.
+data/vectore_store/
