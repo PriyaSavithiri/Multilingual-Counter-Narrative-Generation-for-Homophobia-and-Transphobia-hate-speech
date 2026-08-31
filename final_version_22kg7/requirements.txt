@@ -1,0 +1,57 @@
+# Standalone dependency list for new_arch, so `pip install -r requirements.txt`
+# works from a new_arch-only checkout (e.g. the colab_transfer_*.zip bundles,
+# which contain new_arch/ alone) without needing the parent project's
+# ../requirements.txt to exist alongside it. Previously this file was just
+# `-r ../requirements.txt`, which broke in exactly that situation - kept in
+# sync with the parent project's requirements.txt by hand; if one changes,
+# check the other.
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+tqdm>=4.65.0
+pydantic>=2.0.0
+requests>=2.31.0
+
+# LangChain - the ONLY LLM orchestration layer used by this project.
+# All normal generation (Ollama, OpenAI fallback, HF inference, HF
+# transformers) goes through these packages; direct SDK/HTTP calls are used
+# only for lightweight "is the backend available" checks.
+langchain-core>=0.3.0
+langchain-ollama>=0.2.0
+langchain-openai>=0.2.0
+langchain-huggingface>=0.1.0
+
+# LLM backends (still needed as underlying runtimes for the LangChain
+# wrappers above)
+huggingface_hub>=0.24.0
+transformers>=4.40.0
+torch>=2.1.0
+accelerate>=0.30.0
+bitsandbytes>=0.43.0; platform_system != "Darwin"
+openai>=1.30.0
+
+# RAG
+sentence-transformers>=2.6.0
+faiss-cpu>=1.7.4
+
+# Language detection
+langdetect>=1.0.9
+
+# Evaluation
+rouge-score>=0.1.2
+sacrebleu>=2.4.0
+bert-score>=0.3.13
+
+# Datasets (optional, only needed if fetching ML_MTCONAN_KN from the Hub)
+datasets>=2.19.0
+
+# UI
+streamlit>=1.33.0
+
+# Notebook demo
+ipykernel>=6.29.0
+
+# Optional - only needed if ENABLE_WEB_SEARCH=true (see .env.example).
+# Not installed by default; web_search.py raises a clear, actionable error
+# if ENABLE_WEB_SEARCH is enabled without this package installed.
+# tavily-python

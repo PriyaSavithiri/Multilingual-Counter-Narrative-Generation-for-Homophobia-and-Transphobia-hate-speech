@@ -4,6 +4,7 @@
 # Python
 __pycache__/
 *.pyc
+.pytest_cache/
 
 # Secrets - only .env.example should ever be committed
 .env
@@ -11,3 +12,5 @@ __pycache__/
 # Regenerable binary RAG index - rebuildable from data/knowledge/corpus.jsonl
 # via the project's own indexing code; not something to version.
 data/vectore_store/
+data/vector_store/
+final_version_22kg7/data/vector_store/
